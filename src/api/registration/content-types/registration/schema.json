@@ -1,0 +1,53 @@
+{
+  "kind": "collectionType",
+  "collectionName": "registrations",
+  "info": {
+    "singularName": "registration",
+    "pluralName": "registrations",
+    "displayName": "Registration",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "session": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::session.session"
+    },
+    "name": {
+      "type": "string"
+    },
+    "lastname": {
+      "type": "string"
+    },
+    "identification": {
+      "type": "string"
+    },
+    "birthdate": {
+      "type": "date"
+    },
+    "municipality": {
+      "type": "string"
+    },
+    "sex": {
+      "type": "string"
+    },
+    "gender": {
+      "type": "enumeration",
+      "enum": [
+        "Home",
+        "Dona",
+        "No binari"
+      ]
+    },
+    "datetime": {
+      "type": "datetime"
+    },
+    "uuid": {
+      "type": "string"
+    }
+  }
+}
