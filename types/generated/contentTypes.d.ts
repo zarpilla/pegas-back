@@ -741,6 +741,7 @@ export interface ApiRegistrationRegistration extends Schema.CollectionType {
     gender: Attribute.Enumeration<['Home', 'Dona', 'No binari']>;
     datetime: Attribute.DateTime;
     uuid: Attribute.String;
+    signature: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

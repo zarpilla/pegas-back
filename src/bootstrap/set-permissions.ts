@@ -54,6 +54,7 @@ async function start() {
         "api::activity.activity": ["find", "findOne"],
         "api::session.session": ["find", "findOne"],
         "api::registration.registration": ["create"],
+        "plugin::upload": ["upload"],
       }
     );
 }
