@@ -26,6 +26,12 @@
     },
     "uuid": {
       "type": "string"
+    },
+    "showActivity": {
+      "type": "boolean"
+    },
+    "showDate": {
+      "type": "boolean"
     }
   }
 }

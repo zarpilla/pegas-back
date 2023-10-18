@@ -779,6 +779,8 @@ export interface ApiSessionSession extends Schema.CollectionType {
       'api::activity.activity'
     >;
     uuid: Attribute.String;
+    showActivity: Attribute.Boolean;
+    showDate: Attribute.Boolean;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
