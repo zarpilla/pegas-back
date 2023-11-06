@@ -742,6 +742,9 @@ export interface ApiRegistrationRegistration extends Schema.CollectionType {
     datetime: Attribute.DateTime;
     uuid: Attribute.String;
     signature: Attribute.Media;
+    drets: Attribute.Boolean;
+    phone: Attribute.String;
+    email: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
