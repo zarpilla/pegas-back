@@ -1,0 +1,34 @@
+{
+  "kind": "collectionType",
+  "collectionName": "job_entities",
+  "info": {
+    "singularName": "job-entity",
+    "pluralName": "job-entities",
+    "displayName": "JobEntity"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "logo": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "jobs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::job.job",
+      "mappedBy": "job_entity"
+    }
+  }
+}

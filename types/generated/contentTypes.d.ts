@@ -783,6 +783,111 @@ export interface ApiIndicatorIndicator extends Schema.CollectionType {
   };
 }
 
+export interface ApiJobJob extends Schema.CollectionType {
+  collectionName: 'jobs';
+  info: {
+    singularName: 'job';
+    pluralName: 'jobs';
+    displayName: 'Job';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    description: Attribute.RichText;
+    requirements: Attribute.RichText;
+    job_entity: Attribute.Relation<
+      'api::job.job',
+      'manyToOne',
+      'api::job-entity.job-entity'
+    >;
+    apply: Attribute.RichText;
+    c2aLink: Attribute.String;
+    c2aText: Attribute.String;
+    job_categories: Attribute.Relation<
+      'api::job.job',
+      'oneToMany',
+      'api::job-category.job-category'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::job.job', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::job.job', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiJobCategoryJobCategory extends Schema.CollectionType {
+  collectionName: 'job_categories';
+  info: {
+    singularName: 'job-category';
+    pluralName: 'job-categories';
+    displayName: 'JobCategory';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::job-category.job-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::job-category.job-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiJobEntityJobEntity extends Schema.CollectionType {
+  collectionName: 'job_entities';
+  info: {
+    singularName: 'job-entity';
+    pluralName: 'job-entities';
+    displayName: 'JobEntity';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    description: Attribute.RichText;
+    logo: Attribute.Media;
+    jobs: Attribute.Relation<
+      'api::job-entity.job-entity',
+      'oneToMany',
+      'api::job.job'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::job-entity.job-entity',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::job-entity.job-entity',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiRegistrationRegistration extends Schema.CollectionType {
   collectionName: 'registrations';
   info: {
@@ -898,6 +1003,9 @@ declare module '@strapi/types' {
       'api::activity.activity': ApiActivityActivity;
       'api::entity.entity': ApiEntityEntity;
       'api::indicator.indicator': ApiIndicatorIndicator;
+      'api::job.job': ApiJobJob;
+      'api::job-category.job-category': ApiJobCategoryJobCategory;
+      'api::job-entity.job-entity': ApiJobEntityJobEntity;
       'api::registration.registration': ApiRegistrationRegistration;
       'api::session.session': ApiSessionSession;
     }
