@@ -32,6 +32,18 @@
     },
     "showDate": {
       "type": "boolean"
+    },
+    "entities": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::entity.entity",
+      "mappedBy": "session"
+    },
+    "indicators": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::indicator.indicator",
+      "mappedBy": "session"
     }
   }
 }

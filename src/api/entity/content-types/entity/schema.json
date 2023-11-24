@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "entities",
+  "info": {
+    "singularName": "entity",
+    "pluralName": "entities",
+    "displayName": "Entity"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "session": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::session.session",
+      "inversedBy": "entities"
+    }
+  }
+}

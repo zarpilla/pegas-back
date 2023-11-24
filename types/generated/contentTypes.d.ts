@@ -715,6 +715,74 @@ export interface ApiActivityActivity extends Schema.CollectionType {
   };
 }
 
+export interface ApiEntityEntity extends Schema.CollectionType {
+  collectionName: 'entities';
+  info: {
+    singularName: 'entity';
+    pluralName: 'entities';
+    displayName: 'Entity';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    name: Attribute.String;
+    session: Attribute.Relation<
+      'api::entity.entity',
+      'manyToOne',
+      'api::session.session'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::entity.entity',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::entity.entity',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiIndicatorIndicator extends Schema.CollectionType {
+  collectionName: 'indicators';
+  info: {
+    singularName: 'indicator';
+    pluralName: 'indicators';
+    displayName: 'Indicator';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    name: Attribute.String;
+    session: Attribute.Relation<
+      'api::indicator.indicator',
+      'manyToOne',
+      'api::session.session'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::indicator.indicator',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::indicator.indicator',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiRegistrationRegistration extends Schema.CollectionType {
   collectionName: 'registrations';
   info: {
@@ -784,6 +852,16 @@ export interface ApiSessionSession extends Schema.CollectionType {
     uuid: Attribute.String;
     showActivity: Attribute.Boolean;
     showDate: Attribute.Boolean;
+    entities: Attribute.Relation<
+      'api::session.session',
+      'oneToMany',
+      'api::entity.entity'
+    >;
+    indicators: Attribute.Relation<
+      'api::session.session',
+      'oneToMany',
+      'api::indicator.indicator'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -818,6 +896,8 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::activity.activity': ApiActivityActivity;
+      'api::entity.entity': ApiEntityEntity;
+      'api::indicator.indicator': ApiIndicatorIndicator;
       'api::registration.registration': ApiRegistrationRegistration;
       'api::session.session': ApiSessionSession;
     }

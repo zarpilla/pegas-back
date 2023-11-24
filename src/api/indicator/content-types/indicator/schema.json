@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "indicators",
+  "info": {
+    "singularName": "indicator",
+    "pluralName": "indicators",
+    "displayName": "Indicator"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "session": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::session.session",
+      "inversedBy": "indicators"
+    }
+  }
+}
