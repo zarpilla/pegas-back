@@ -727,9 +727,9 @@ export interface ApiEntityEntity extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String;
-    session: Attribute.Relation<
+    sessions: Attribute.Relation<
       'api::entity.entity',
-      'manyToOne',
+      'manyToMany',
       'api::session.session'
     >;
     createdAt: Attribute.DateTime;
@@ -761,9 +761,9 @@ export interface ApiIndicatorIndicator extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String;
-    session: Attribute.Relation<
+    sessions: Attribute.Relation<
       'api::indicator.indicator',
-      'manyToOne',
+      'manyToMany',
       'api::session.session'
     >;
     createdAt: Attribute.DateTime;
@@ -902,7 +902,7 @@ export interface ApiRegistrationRegistration extends Schema.CollectionType {
   attributes: {
     session: Attribute.Relation<
       'api::registration.registration',
-      'oneToOne',
+      'manyToOne',
       'api::session.session'
     >;
     name: Attribute.String;
@@ -959,13 +959,18 @@ export interface ApiSessionSession extends Schema.CollectionType {
     showDate: Attribute.Boolean;
     entities: Attribute.Relation<
       'api::session.session',
-      'oneToMany',
+      'manyToMany',
       'api::entity.entity'
     >;
     indicators: Attribute.Relation<
       'api::session.session',
-      'oneToMany',
+      'manyToMany',
       'api::indicator.indicator'
+    >;
+    registrations: Attribute.Relation<
+      'api::session.session',
+      'oneToMany',
+      'api::registration.registration'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;

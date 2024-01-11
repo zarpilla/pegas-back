@@ -14,8 +14,9 @@
   "attributes": {
     "session": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::session.session"
+      "relation": "manyToOne",
+      "target": "api::session.session",
+      "inversedBy": "registrations"
     },
     "name": {
       "type": "string"

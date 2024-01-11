@@ -35,14 +35,20 @@
     },
     "entities": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToMany",
       "target": "api::entity.entity",
-      "mappedBy": "session"
+      "mappedBy": "sessions"
     },
     "indicators": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToMany",
       "target": "api::indicator.indicator",
+      "mappedBy": "sessions"
+    },
+    "registrations": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::registration.registration",
       "mappedBy": "session"
     }
   }

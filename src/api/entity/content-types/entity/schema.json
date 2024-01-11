@@ -14,9 +14,9 @@
     "name": {
       "type": "string"
     },
-    "session": {
+    "sessions": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "manyToMany",
       "target": "api::session.session",
       "inversedBy": "entities"
     }
