@@ -4,7 +4,8 @@
   "info": {
     "singularName": "job-category",
     "pluralName": "job-categories",
-    "displayName": "JobCategory"
+    "displayName": "JobCategory",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -13,6 +14,18 @@
   "attributes": {
     "name": {
       "type": "string"
+    },
+    "image": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
     }
   }
 }

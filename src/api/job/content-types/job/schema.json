@@ -40,6 +40,19 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::job-category.job-category"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "job_type": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::job-type.job-type"
     }
   }
 }

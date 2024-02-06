@@ -54,6 +54,10 @@ async function start() {
         "api::activity.activity": ["find", "findOne"],
         "api::session.session": ["find", "findOne"],
         "api::registration.registration": ["create"],
+        "api::job.job": ["find", "findOne"],
+        "api::job-category.job-category": ["find", "findOne"],
+        "api::job-entity.job-entity": ["find", "findOne"],
+        "api::job-type.job-type": ["find", "findOne"],
         "plugin::upload": ["upload"],
       }
     );

@@ -10,11 +10,15 @@
     "strapi": "strapi"
   },
   "dependencies": {
-    "@strapi/plugin-i18n": "4.14.2",
-    "@strapi/plugin-users-permissions": "4.14.2",
-    "@strapi/strapi": "4.14.2",
+    "@strapi/plugin-i18n": "4.17.0",
+    "@strapi/plugin-users-permissions": "4.17.0",
+    "@strapi/strapi": "4.17.0",
     "mysql": "2.18.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^5.3.4",
     "strapi-plugin-import-export-entries": "^1.21.1",
+    "styled-components": "^5.3.11",
     "uuid": "^9.0.0"
   },
   "author": {
