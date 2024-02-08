@@ -50,6 +50,12 @@
       "relation": "oneToMany",
       "target": "api::registration.registration",
       "mappedBy": "session"
+    },
+    "showDescription": {
+      "type": "boolean"
+    },
+    "description": {
+      "type": "richtext"
     }
   }
 }

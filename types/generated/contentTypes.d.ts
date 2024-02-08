@@ -1102,6 +1102,8 @@ export interface ApiSessionSession extends Schema.CollectionType {
       'oneToMany',
       'api::registration.registration'
     >;
+    showDescription: Attribute.Boolean;
+    description: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
