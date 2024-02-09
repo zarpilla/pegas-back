@@ -11,7 +11,7 @@ export default factories.createCoreController(
       const registrations = await strapi.db
         .query("api::registration.registration")
         .findMany({
-          populate: ["session", "session.activity"],
+          populate: ["session", "session.activity", "signature"],
         });
 
       const registrationsCSV = [];
@@ -22,6 +22,9 @@ export default factories.createCoreController(
             if (registration && registration.session && registration.session.activity && registration.session.activity.id) {
                 registration.activity_name = registration.session.activity.name
             }
+        }
+        if (registration && registration.signature && registration.signature.id) {
+          registration.signature = process.env.URL + registration.signature.url
         }
 
         delete registration.session
