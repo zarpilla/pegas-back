@@ -30,7 +30,7 @@ export default factories.createCoreController(
         delete registration.session
         delete registration.id
         delete registration.uuid
-        delete registration.datetime
+        delete registration.createdAt
         delete registration.updatedAt
 
         console.log("registration", registration);
