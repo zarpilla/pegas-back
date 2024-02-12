@@ -3,6 +3,7 @@
  */
 
 import { factories } from "@strapi/strapi";
+import moment from "moment";
 
 export default factories.createCoreController(
   "api::registration.registration",
@@ -27,10 +28,12 @@ export default factories.createCoreController(
           registration.signature = process.env.URL + registration.signature.url
         }
 
+        registration.createdAt = moment(registration.createdAt).format("YYYY-MM-DD HH:mm:ss")
+
         delete registration.session
         delete registration.id
         delete registration.uuid
-        delete registration.createdAt
+        delete registration.datetime
         delete registration.updatedAt
 
         console.log("registration", registration);
