@@ -28,12 +28,12 @@ export default factories.createCoreController(
           registration.signature = process.env.URL + registration.signature.url
         }
 
-        registration.createdAt = moment(registration.createdAt).format("YYYY-MM-DD HH:mm:ss")
+        registration.datetime = moment(registration.datetime).format("YYYY-MM-DD HH:mm:ss")
 
         delete registration.session
         delete registration.id
         delete registration.uuid
-        delete registration.datetime
+        delete registration.createdAt
         delete registration.updatedAt
 
         console.log("registration", registration);
