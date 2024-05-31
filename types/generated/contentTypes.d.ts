@@ -994,12 +994,14 @@ export interface ApiJobTypeJobType extends Schema.CollectionType {
     singularName: 'job-type';
     pluralName: 'job-types';
     displayName: 'JobType';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     name: Attribute.String;
+    slug: Attribute.UID<'api::job-type.job-type', 'name'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
