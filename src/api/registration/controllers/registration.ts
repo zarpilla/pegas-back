@@ -9,18 +9,14 @@ export default factories.createCoreController(
   "api::registration.registration",
   ({ strapi }) => ({
     async findAllRegistration(ctx) {
-      const where = {};
+      const where = { session: {} };
 
       if (ctx.query && ctx.query.sessionid) {
-        where["session"] = {
-          id: ctx.query.sessionid,
-        };
+        where.session["id"] = ctx.query.sessionid;
       }
       if (ctx.query && ctx.query.activityid) {
-        where["session"] = {
-          activity: {
-            id: ctx.query.activityid,
-          },
+        where.session["activity"] = {
+          id: ctx.query.activityid,
         };
       }
       if (ctx.query && ctx.query.datetime) {
