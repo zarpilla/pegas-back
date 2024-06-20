@@ -9,9 +9,32 @@ export default factories.createCoreController(
   "api::registration.registration",
   ({ strapi }) => ({
     async findAllRegistration(ctx) {
+      const where = {};
+
+      if (ctx.query && ctx.query.sessionid) {
+        where["session"] = {
+          id: ctx.query.sessionid,
+        };
+      }
+      if (ctx.query && ctx.query.activityid) {
+        where["session"] = {
+          activity: {
+            id: ctx.query.activityid,
+          },
+        };
+      }
+      if (ctx.query && ctx.query.datetime) {
+        where["datetime"] = {
+          $gte: ctx.query.datetime,
+        };
+      }
+
+      console.log("ctx.query", ctx.query);
+
       const registrations = await strapi.db
         .query("api::registration.registration")
         .findMany({
+          where,
           populate: ["session", "session.activity", "signature"],
         });
 
@@ -19,24 +42,39 @@ export default factories.createCoreController(
       for (let i = 0; i < registrations.length; i++) {
         const registration = registrations[i];
         if (registration && registration.session && registration.session.id) {
-            registration.session_name = registration.session.name
-            if (registration && registration.session && registration.session.activity && registration.session.activity.id) {
-                registration.activity_name = registration.session.activity.name
-            }
+          registration.session_name = registration.session.name;
+          if (
+            registration &&
+            registration.session &&
+            registration.session.activity &&
+            registration.session.activity.id
+          ) {
+            registration.activity_name = registration.session.activity.name;
+          }
         }
-        if (registration && registration.signature && registration.signature.id) {
-          registration.signature = process.env.URL + registration.signature.url
+        if (
+          registration &&
+          registration.signature &&
+          registration.signature.id
+        ) {
+          registration.signature = process.env.URL + registration.signature.url;
         }
 
-        registration.datetime = moment(registration.datetime).format("YYYY-MM-DD HH:mm:ss")
+        registration.datetime = moment(registration.datetime).format(
+          "YYYY-MM-DD HH:mm:ss"
+        );
 
-        delete registration.session
-        delete registration.id
-        delete registration.uuid
-        delete registration.createdAt
-        delete registration.updatedAt
+        registration.activityid = registration.session?.activity?.id;
+        registration.sessionid = registration.session?.id;
 
-        console.log("registration", registration);
+        delete registration.session;
+        delete registration.id;
+        delete registration.uuid;
+        delete registration.createdAt;
+        delete registration.updatedAt;
+
+        // console.log("registration", registration);
+
         registrationsCSV.push(registration);
       }
 
