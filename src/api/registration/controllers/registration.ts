@@ -9,6 +9,11 @@ export default factories.createCoreController(
   "api::registration.registration",
   ({ strapi }) => ({
     async findAllRegistration(ctx) {
+      // Check if user is authenticated
+      if (!ctx.state.user) {
+        return ctx.unauthorized('You must be authenticated to access this resource');
+      }
+      
       const where = { session: {} };
 
       if (ctx.query && ctx.query.sessionid) {

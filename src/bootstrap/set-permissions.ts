@@ -46,6 +46,10 @@ async function setPermissions(roleType, newPermissions) {
 async function start() {    
     await setPermissions("authenticated",       
       {
+        "api::activity.activity": ["find", "findOne"],
+        "api::session.session": ["find", "findOne"],
+        "api::registration.registration": ["create", "find", "findOne"],
+        "plugin::users-permissions.user": ["me"],
       }
     );
 
@@ -59,6 +63,7 @@ async function start() {
         "api::job-entity.job-entity": ["find", "findOne"],
         "api::job-type.job-type": ["find", "findOne"],
         "plugin::upload": ["upload"],
+        "plugin::users-permissions.auth": ["callback", "connect", "register", "emailConfirmation", "sendEmailConfirmation", "forgotPassword", "resetPassword"],
       }
     );
 }
